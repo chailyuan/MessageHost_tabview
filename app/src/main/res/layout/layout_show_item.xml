@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/show_item_padding"
+    android:paddingTop="@dimen/show_item_padding"
+    android:background="@drawable/background_rectangle6">
+    <TextView
+        android:id="@+id/tv_showItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="装备类型:"
+        android:textColor="#000208"
+        android:textSize="17sp"/>
+    <EditText
+        android:id="@+id/et_showItem"
+        android:editable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:enabled="false" />
+    <Button
+        android:id="@+id/btn_showItem"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="保存"/>
+
+</LinearLayout>

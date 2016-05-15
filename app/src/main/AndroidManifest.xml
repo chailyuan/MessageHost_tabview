@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gaga.messagehost"
+    android:versionCode="1"
+    android:versionName="2.1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logomine"
+
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/mainactivity_name" />
+        <activity
+            android:name=".ShowConfigActivity"
+            android:label="@string/showconfigactivity_name"
+            android:icon="@drawable/edit"/>
+        <activity
+            android:name=".RepairMessageActivity"
+            android:label="@string/repairmessactivity_name" />
+        <activity
+            android:name=".InExportActivity"
+            android:label="@string/inexportactivity_name" />
+        <activity
+            android:name=".StorageActivity"
+            android:label="@string/storageactivity_name" />
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/helpactivity_name" />
+        <activity android:name=".RepairCheckActivity"
+            android:label="维修记录查询"/>
+        <activity android:name=".RepairHistoryActivity"
+            android:label="维修经验查询"/>
+        <activity android:name=".RepairImportActivity"
+            android:label="维修情况录入"/>
+
+        <service
+            android:name=".SynchronizationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".PCMessageReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DataSyncServerStart"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

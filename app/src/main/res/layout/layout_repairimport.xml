@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eee4da">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请输入条形码："/>
+        <EditText
+            android:id="@+id/et_repairimportCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入条形码"
+            android:text=""/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="维修日期："/>
+
+        <EditText
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/et_RPriqi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入日期"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="故障现象："/>
+        <EditText
+            android:id="@+id/et_RPxianxiang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入故障现象"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="处理办法："/>
+        <EditText
+            android:id="@+id/et_RPbanfa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入处理办法"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="维修人员："/>
+        <EditText
+            android:id="@+id/et_RPrenyaun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入维修人"
+            android:text=""/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_RPSaveRPMess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存"/>
+
+
+
+</LinearLayout>

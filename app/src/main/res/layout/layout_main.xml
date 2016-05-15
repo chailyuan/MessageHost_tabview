@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#eee4da">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_rectangle1">
+
+        <ImageView
+            android:src="@drawable/edit"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+        <Button
+            android:id="@+id/btn_MaintainMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/showconfigactivity_name"
+            android:layout_weight="1"
+            android:background="@drawable/background_rectangle1"
+            android:textSize="18sp" />
+</LinearLayout>
+
+<LinearLayout
+android:layout_weight="1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@drawable/background_rectangle2"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@drawable/config"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
+        <Button
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:id="@+id/btn_AdminMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/repairmessactivity_name"
+            android:layout_weight="1"
+            android:background="@drawable/background_rectangle2"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_rectangle1"
+        >
+        <ImageView
+            android:src="@drawable/publish"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_ExprotMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/inexportactivity_name"
+            android:background="@drawable/background_rectangle1"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_rectangle2"
+        >
+        <ImageView
+            android:src="@drawable/sign_in"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            />
+        <Button
+            android:id="@+id/btn_LibMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/storageactivity_name"
+            android:layout_weight="1"
+            android:background="@drawable/background_rectangle2"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_rectangle1"
+        >
+        <ImageView
+            android:src="@drawable/about2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            />
+        <Button
+            android:id="@+id/btn_HelpMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/helpactivity_name"
+            android:layout_weight="1"
+            android:background="@drawable/background_rectangle1"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

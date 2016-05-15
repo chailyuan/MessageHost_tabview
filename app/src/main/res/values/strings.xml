@@ -1,0 +1,12 @@
+<resources>
+    <string name="loginactivity_name">请登录</string>
+    <string name="showconfigactivity_name">电脑配置信息维护</string>
+    <string name="repairmessactivity_name">电脑维修信息管理</string>
+    <string name="inexportactivity_name">数据导入导出</string>
+    <string name="storageactivity_name">出入库管理</string>
+    <string name="helpactivity_name">关于</string>
+    <string name="mainactivity_name">请选择功能</string>
+    <string name="getcodeactivity_name">请输入条形码</string>
+    <string name="app_name">管理助手</string>
+    <string name="title_activity_login">LoginActivity</string>
+</resources>
