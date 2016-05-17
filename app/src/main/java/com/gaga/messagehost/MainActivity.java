@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /**
@@ -14,6 +15,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("管理助手");
+        toolbar.setSubtitle(R.string.mainactivity_name);
+        toolbar.setLogo(R.drawable.logomine);
+        setSupportActionBar(toolbar);
+
         //创建按钮监听事件
         findViewById(R.id.btn_MaintainMain).setOnClickListener(this);
         findViewById(R.id.btn_AdminMain).setOnClickListener(this);

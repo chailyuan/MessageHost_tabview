@@ -25,14 +25,16 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/mainactivity_name" />
+            android:label="@string/mainactivity_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ShowConfigActivity"
             android:label="@string/showconfigactivity_name"
-            android:icon="@drawable/edit"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".RepairMessageActivity"
-            android:label="@string/repairmessactivity_name" />
+            android:label="@string/repairmessactivity_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".InExportActivity"
             android:label="@string/inexportactivity_name" />

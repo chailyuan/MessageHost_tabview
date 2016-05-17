@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="50dp"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/show_item_padding"
-    android:paddingTop="@dimen/show_item_padding"
-    android:background="@drawable/background_rectangle6">
+    android:background="@drawable/background_show_item">
     <TextView
         android:id="@+id/tv_showItem"
         android:layout_width="wrap_content"
@@ -14,12 +12,15 @@
         android:textColor="#000208"
         android:textSize="17sp"/>
     <EditText
+        android:layout_gravity="center_vertical"
         android:id="@+id/et_showItem"
         android:editable="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_weight="1"
-        android:enabled="false" />
+        android:enabled="false"
+        android:textAlignment="center"
+        android:background="@drawable/background_edit_show_list"/>
     <Button
         android:id="@+id/btn_showItem"
         style="?android:attr/buttonStyleSmall"
