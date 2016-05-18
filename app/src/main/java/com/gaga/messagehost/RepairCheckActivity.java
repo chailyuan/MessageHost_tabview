@@ -87,10 +87,6 @@ public class RepairCheckActivity extends AppCompatActivity {
     private List<Map<String, Object>> GetData(Cursor cursor) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = null;
-
-
-
-
         if (cursor.getCount() == 0){
 
             map = new HashMap<String, Object>();
@@ -137,8 +133,6 @@ public class RepairCheckActivity extends AppCompatActivity {
             String code = etCode.getText().toString().replace("\n", "");
             etCode.setText(code);
 
-
-
             if (code.equals("")) {
                 //返回的数据是空的
             } else {
@@ -149,6 +143,13 @@ public class RepairCheckActivity extends AppCompatActivity {
 
                 Cursor cursor = dbSingle.dbReader.query(MyDataBase.TABLENAME_REPARE, null, MyDataBase.RP_CODE + " =?", new String[]{code}, null, null, null, null);
 
+                if (cursor.getCount()>0){
+                    btnSavePostion.setEnabled(true);
+                    etPosition.setEnabled(true);
+                }else {
+                    btnSavePostion.setEnabled(false);
+                    etPosition.setEnabled(false);
+                }
                 mData = GetData(cursor);
                 cursor.close();
 

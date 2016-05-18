@@ -22,14 +22,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="请输入条形码："/>
+
         <EditText
             android:id="@+id/et_showCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/edit_search"
+            android:drawableLeft="@drawable/sp"
+            android:textColor="#0f0f0f"
+            android:padding="5dp"
             android:hint="请输入条形码"/>
 
     </LinearLayout>

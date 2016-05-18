@@ -47,9 +47,11 @@
         <activity android:name=".RepairCheckActivity"
             android:label="维修记录查询"/>
         <activity android:name=".RepairHistoryActivity"
-            android:label="维修经验查询"/>
+            android:label="维修经验查询"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".RepairImportActivity"
-            android:label="维修情况录入"/>
+            android:label="维修情况录入"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <service
             android:name=".SynchronizationService"

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,21 @@ public class RepairHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_repairhistory);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("维修经验查询");
+//        toolbar.setSubtitle("linyuan");
+        toolbar.setLogo(R.drawable.search);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.goback_bg);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         etRPHistoryCode = (EditText)findViewById(R.id.et_repairhistoryCode);
         lvRPhistory = (ListView)findViewById(R.id.lv_repairhistory);
 
