@@ -34,9 +34,9 @@
             android:ems="10"
             android:id="@+id/et_RPriqi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入日期"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -49,9 +49,9 @@
         <EditText
             android:id="@+id/et_RPxianxiang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入故障现象"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -64,9 +64,9 @@
         <EditText
             android:id="@+id/et_RPbanfa"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入处理办法"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -79,15 +79,21 @@
         <EditText
             android:id="@+id/et_RPrenyaun"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入维修人"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="20dp">
+    </LinearLayout>
     <Button
         android:id="@+id/btn_RPSaveRPMess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:background="@drawable/background_button_login"
         android:text="保存"/>
 
 

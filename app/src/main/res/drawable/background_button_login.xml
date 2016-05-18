@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:state_focused="false">
-
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#ffc67171"/>
+            <stroke android:width="0.5dp" android:color="#C8C8C8"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+    <item  android:state_pressed="false">
         <shape>
             <solid android:color="#eeff"/>
             <stroke android:width="0.5dp" android:color="#C8C8C8"/>
             <corners android:radius="10dp"/>
         </shape>
     </item>
-    <item android:state_focused="true">
-        <shape>
-            <solid android:color="#ff0"/>
-            <stroke android:width="0.5dp" android:color="#C8C8C8"/>
-            <corners android:radius="10dp"/>
-        </shape>
-    </item>
+
 
 
 </selector>

@@ -35,9 +35,9 @@
 
 
         <LinearLayout
-            android:layout_weight="1"
+            android:id="@+id/ll_check"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:background="@drawable/background_rectangle3"
             >
@@ -46,22 +46,31 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"/>
-            <Button
+            <TextView
                 android:textSize="18sp"
                 android:id="@+id/btn_RepairCheck"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:layout_gravity="start"
+                android:textColor="#ff000000"
                 android:text="以往维修记录查询"
-                android:background="@drawable/background_rectangle3"
+                android:background="@drawable/background_rectangle3"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="1"
+            android:id="@+id/ll_import"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:background="@drawable/background_rectangle4"
             >
@@ -70,21 +79,30 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"/>
-            <Button
+            <TextView
                 android:textSize="18sp"
                 android:id="@+id/btn_RepairImport"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:layout_gravity="start"
+                android:textColor="#ff000000"
                 android:background="@drawable/background_rectangle4"
-                android:text="当前维修情况录入"
-                android:layout_weight="1"/>
+                android:text="当前维修情况录入"/>
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_weight="1"
+            android:id="@+id/ll_history"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:background="@drawable/background_rectangle5"
             >
@@ -93,16 +111,25 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"/>
-            <Button
+            <TextView
                 android:textSize="18sp"
                 android:id="@+id/btn_RepairHistory"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:layout_gravity="start"
+                android:textColor="#ff000000"
                 android:background="@drawable/background_rectangle5"
-                android:text="以往故障经验查阅"
+                android:text="以往故障经验查阅"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>
 
