@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#5001B8FF">
+    android:background="#2001B8FF">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:background="@drawable/edit_search"
             android:drawableLeft="@drawable/sp"
             android:singleLine="true"
-            android:textColor="#fffafa"
+            android:textColor="#0f0f0f"
             android:padding="5dp"
             android:hint="请输入关键词"
             android:text=""/>

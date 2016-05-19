@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,20 @@ public class RepairCheckActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_repaircheck);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("维修记录查询");
+//        toolbar.setSubtitle("linyuan");
+        toolbar.setLogo(R.drawable.search);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.goback_bg);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         dbSingle = MyDataBase.GetDb(this);
 

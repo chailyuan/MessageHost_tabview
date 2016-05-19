@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -40,6 +41,19 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_storage);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("出入库管理");
+        toolbar.setLogo(R.drawable.sign_in);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.goback_bg);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         dbSingle = MyDataBase.GetDb(this);
 

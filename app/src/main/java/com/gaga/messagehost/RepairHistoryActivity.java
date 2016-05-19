@@ -42,7 +42,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setTitle("维修经验查询");
 //        toolbar.setSubtitle("linyuan");
-        toolbar.setLogo(R.drawable.search);
+        toolbar.setLogo(R.drawable.zoom);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationIcon(R.drawable.goback_bg);

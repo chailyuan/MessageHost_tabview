@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#5001B8FF">
+    android:background="#2001B8FF">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:background="@drawable/edit_search"
             android:drawableLeft="@drawable/sp"
             android:singleLine="true"
-            android:textColor="#fffafa"
+            android:textColor="#0f0f0f"
             android:padding="5dp"
             android:hint="请输入条形码"
             android:text=""/>
@@ -48,6 +48,7 @@
             android:text="维修日期："/>
 
         <EditText
+            android:paddingLeft="10dp"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/et_RPriqi"
@@ -65,6 +66,7 @@
             android:layout_height="wrap_content"
             android:text="故障现象："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPxianxiang"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:text="处理办法："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPbanfa"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -95,6 +98,7 @@
             android:layout_height="wrap_content"
             android:text="维修人员："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPrenyaun"
             android:layout_width="match_parent"
             android:layout_height="45dp"

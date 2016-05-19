@@ -42,7 +42,8 @@
 
         <activity
             android:name=".InExportActivity"
-            android:label="@string/inexportactivity_name" />
+            android:label="@string/inexportactivity_name"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".StorageActivity"
@@ -51,10 +52,12 @@
 
         <activity
             android:name=".HelpActivity"
-            android:label="@string/helpactivity_name" />
+            android:label="@string/helpactivity_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".RepairCheckActivity"
-            android:label="维修记录查询"/>
+            android:label="维修记录查询"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".RepairHistoryActivity"
             android:label="维修经验查询"
