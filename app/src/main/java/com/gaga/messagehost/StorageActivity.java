@@ -11,6 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,15 +28,13 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
     private MyDataBase dbSingle = null;
 
 
-    private Switch swStorage = null;
     private EditText etStorageCode = null;
     private EditText etStoragePosition = null;
     private EditText etStorageStyle = null;
     private Button btnSave = null;
 
-    private String thisCode = null;
-
-    private TextView tvStorage = null;
+    private RadioGroup genderGroup=null;
+    private RadioButton inRadio,outRadio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,12 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
 
         dbSingle = MyDataBase.GetDb(this);
 
+        etStorageCode = (EditText)findViewById(R.id.et_storageCode);
         etStoragePosition = (EditText)findViewById(R.id.et_StoragePosition);
         etStorageStyle = (EditText)findViewById(R.id.et_StorageStyle);
+        genderGroup = (RadioGroup)findViewById(R.id.radio_group);
+        inRadio = (RadioButton)findViewById(R.id.radio_inStorage);
+        outRadio = (RadioButton)findViewById(R.id.radio_outStorage);
         btnSave = (Button)findViewById(R.id.btn_StorageSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,44 +66,18 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
                 final Date curDate = new Date(System.currentTimeMillis());//获取当前时间
                 String strDate = formatter.format(curDate);
 
-                if (swStorage.isChecked()){
-                    cv.put(MyDataBase.MT_OUTSTORAGE,strDate);
-                }else {
+                if (inRadio.isChecked()){
                     cv.put(MyDataBase.MT_INSTORAGE,strDate);
+                }else {
+                    cv.put(MyDataBase.MT_OUTSTORAGE,strDate);
                 }
+                cv.put(MyDataBase.MT_STATUS,genderGroup.getCheckedRadioButtonId()==R.id.radio_inStorage?"库存":"在用");
                 whereClause = MyDataBase.MT_CODE+"=?";
                 dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etStorageCode.getText().toString()});
                 Toast.makeText(StorageActivity.this,"保存成功",Toast.LENGTH_SHORT).show();
             }
         });
 
-        tvStorage = (TextView)findViewById(R.id.tv_Storage);
-        etStorageCode = (EditText)findViewById(R.id.et_storageCode);
-        swStorage = (Switch)findViewById(R.id.sw_storage);
-        swStorage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    //选中状态，设置在用
-                    //直接更新数据库数据
-                    ContentValues cv = new ContentValues();
-                    cv.put(MyDataBase.MT_STATUS, "在用");
-                    String whereClause = MyDataBase.MT_CODE+"=?";
-                    dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etStorageCode.getText().toString()});
-                    tvStorage.setText("在用");
-                } else {
-                    //关闭装填，设置库存
-                    ContentValues cv = new ContentValues();
-                    cv.put(MyDataBase.MT_STATUS, "库存");
-                    String whereClause = MyDataBase.MT_CODE+"=?";
-                    dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etStorageCode.getText().toString()});
-                    tvStorage.setText("库存");
-                }
-            }
-        });
-        SimpleDateFormat formatter = new SimpleDateFormat ("yyyy年MM月dd日");
-        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-        String strDate = formatter.format(curDate);
     }
 
     @Override
@@ -112,7 +90,6 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
             if (code.equals("")) {
                 //返回的数据是空的
                 Toast.makeText(this,"请输入条形码！",Toast.LENGTH_SHORT).show();
-                swStorage.setEnabled(false);
                 etStorageStyle.setEnabled(false);
                 etStoragePosition.setEnabled(false);
                 btnSave.setEnabled(false);
@@ -128,11 +105,12 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
 
                 if (cursor.moveToNext()) {
                     //查询到了数据
-                    swStorage.setEnabled(true);
                     etStorageStyle.setEnabled(true);
                     etStoragePosition.setEnabled(true);
                     btnSave.setEnabled(true);
-                    thisCode = code;
+                    inRadio.setEnabled(true);
+                    outRadio.setEnabled(true);
+
 
                     String status = cursor.getString(cursor.getColumnIndex(MyDataBase.MT_STATUS));
 
@@ -147,16 +125,16 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
                     }
 
                     if (status.equals("在用")){
-                        swStorage.setChecked(true);
+                        outRadio.setChecked(true);
                     }else if (status.equals("库存")){
-                        swStorage.setChecked(false);
+                        inRadio.setChecked(true);
                     }
                 }else {
-
-                    swStorage.setEnabled(false);
                     etStorageStyle.setEnabled(false);
                     etStoragePosition.setEnabled(false);
                     btnSave.setEnabled(false);
+                    inRadio.setEnabled(false);
+                    outRadio.setEnabled(false);
 
                     Toast.makeText(this,"未查询到数据！请检查",Toast.LENGTH_SHORT).show();
                 }

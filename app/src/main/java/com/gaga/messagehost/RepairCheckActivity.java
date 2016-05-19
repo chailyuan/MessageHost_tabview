@@ -79,6 +79,7 @@ public class RepairCheckActivity extends AppCompatActivity {
         map = new HashMap<String, Object>();
         map.put("name","");
         map.put("content", "");
+        map.put("section",true);
         list.add(map);
 
         return list;
@@ -92,6 +93,7 @@ public class RepairCheckActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "无记录");
             map.put("content", "");
+            map.put("section",true);//表明是否是标题，false表明不是标题,true表明是标题
             list.add(map);
 
             Toast.makeText(this,"未查詢到!",Toast.LENGTH_SHORT).show();
@@ -108,6 +110,7 @@ public class RepairCheckActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "记录"+count+"：");
             map.put("content","");
+            map.put("section",true);//表明是否是标题，false表明不是标题,true表明是标题
             count++;
             list.add(map);
 
@@ -119,6 +122,8 @@ public class RepairCheckActivity extends AppCompatActivity {
                 map = new HashMap<String, Object>();
                 map.put("name", MyDataBase.RP_ALL_CHINESE[i] + ':');
                 map.put("content", cursor.getString(i + 1).toString());
+                map.put("section",false);//表明是否是标题，false表明不是标题,true表明是标题
+
                 list.add(map);
             }
 
@@ -164,9 +169,16 @@ public class RepairCheckActivity extends AppCompatActivity {
     public final class ViewHolder {
         public TextView title;
         public TextView info;
+        boolean section;
     }
 
+    private static final int[] COLORS = new int[]{
+            R.color.green_light, R.color.orange_light,
+            R.color.blue_light, R.color.red_light};
+
     public class MyAdapter extends BaseAdapter {
+
+
 
         private LayoutInflater mInflater;
 
@@ -184,16 +196,24 @@ public class RepairCheckActivity extends AppCompatActivity {
 
                 //可以理解为从vlist获取view  之后把view返回给ListView
 
+
                 convertView = mInflater.inflate(R.layout.layout_repaircheck_item, null);
-                holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
+
                 holder.info = (TextView) convertView.findViewById(R.id.tv_RPCheck_item);
+                holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
+
+                holder.section = (boolean) mData.get(position).get("section");
+
+//                if (holder.section){
+//                    convertView.setBackgroundColor(parent.getResources().getColor(COLORS[1]));
+//                }
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
             holder.title.setText((String) mData.get(position).get("name"));
             holder.info.setText((String) mData.get(position).get("content"));
+
 
             return convertView;
         }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:background="@drawable/background_show_item"
+    android:gravity="center_vertical">
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_showItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="装备类型:"
+        android:textColor="#000208"
+        android:textSize="17sp"/>
+    <TextView
+        android:gravity="center"
+        android:textColor="#000208"
+        android:text=""
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/et_showItem"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:textAlignment="center"
+        android:background="@drawable/background_edit_show_list"/>
+
+
+</LinearLayout>
