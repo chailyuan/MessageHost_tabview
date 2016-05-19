@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,11 +53,35 @@ public class RepairHistoryActivity extends AppCompatActivity {
             }
         });
 
-        etRPHistoryCode = (EditText)findViewById(R.id.et_repairhistoryCode);
         lvRPhistory = (ListView)findViewById(R.id.lv_repairhistory);
 
-        MyAdapter myAdapter = new MyAdapter(this);
+        final MyAdapter myAdapter = new MyAdapter(this);
         lvRPhistory.setAdapter(myAdapter);
+
+        etRPHistoryCode = (EditText)findViewById(R.id.et_repairhistoryCode);
+        etRPHistoryCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String str = etRPHistoryCode.getText().toString();
+                if (!str.equals("")) {
+                    Cursor cursor = dbSingle.dbReader.query(MyDataBase.TABLENAME_REPARE, null, MyDataBase.RP_PHENOMENON + " LIKE ?", new String[]{"%" + str + "%"}, null, null, null, null);
+                    mData = GetData(cursor);
+                    myAdapter.notifyDataSetChanged();
+                    cursor.close();
+                }
+            }
+        });
+
     }
 
     @Override
