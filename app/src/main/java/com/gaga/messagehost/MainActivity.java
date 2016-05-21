@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * Created by 临园 on 2016/4/20.
@@ -22,31 +23,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar.setLogo(R.drawable.logomine);
         setSupportActionBar(toolbar);
 
-        //创建按钮监听事件
-        findViewById(R.id.btn_MaintainMain).setOnClickListener(this);
-        findViewById(R.id.btn_AdminMain).setOnClickListener(this);
-        findViewById(R.id.btn_ExprotMain).setOnClickListener(this);
-        findViewById(R.id.btn_LibMain).setOnClickListener(this);
-        findViewById(R.id.btn_HelpMain).setOnClickListener(this);
+        ((LinearLayout)findViewById(R.id.ll_1)).setOnClickListener(this);
+        ((LinearLayout)findViewById(R.id.ll_2)).setOnClickListener(this);
+        ((LinearLayout)findViewById(R.id.ll_3)).setOnClickListener(this);
+        ((LinearLayout)findViewById(R.id.ll_4)).setOnClickListener(this);
+        ((LinearLayout)findViewById(R.id.ll_5)).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             //分别跳转到不同的ACTIVITY
-            case R.id.btn_MaintainMain:
+            case R.id.ll_1:
                 startActivity(new Intent(MainActivity.this,ShowConfigActivity.class));
             break;
-            case R.id.btn_AdminMain:
+            case R.id.ll_2:
                 startActivity(new Intent(MainActivity.this,RepairMessageActivity.class));
             break;
-            case R.id.btn_ExprotMain:
+            case R.id.ll_3:
                 startActivity(new Intent(MainActivity.this,InExportActivity.class));
                 break;
-            case R.id.btn_LibMain:
+            case R.id.ll_4:
                 startActivity(new Intent(MainActivity.this,StorageActivity.class));
                 break;
-            case R.id.btn_HelpMain:
+            case R.id.ll_5:
                 startActivity(new Intent(MainActivity.this,HelpActivity.class));
                 break;
         }

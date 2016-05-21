@@ -44,6 +44,14 @@ public class LoginActivity extends AppCompatActivity {
 
         InsertDataBase();
 
+        findViewById(R.id.tv_forgotpassword).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //忘记密码
+                Toast.makeText(LoginActivity.this, "请使用管理员账号登录重置密码！", Toast.LENGTH_LONG).show();
+            }
+        });
+
         findViewById(R.id.login_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,10 +60,15 @@ public class LoginActivity extends AppCompatActivity {
                 password = ((EditText) findViewById(R.id.login_password)).getText().toString();
 
                 if (userName.equals("")){
-//                    Toast.makeText(LoginActivity.this, "用户名不能为空", Toast.LENGTH_SHORT).show();
-//                    return;
-// 测试用，空用户名可登陆
-                    GotoMainActivity();
+                    Toast.makeText(LoginActivity.this, "用户名不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (userName.equals("admin")&&password.equals("admin")){
+                    //默认的管理员账号登录，此账号登录只能进入注册界面
+                    ((EditText)findViewById(R.id.login_username)).setText("");
+                    ((EditText)findViewById(R.id.login_password)).setText("");
+                    startActivity(new Intent(LoginActivity.this, NewUserActivity.class));
+                    return;
                 }
                 Cursor lCursor = dbSingle.dbReader.rawQuery("SELECT * FROM "+ MyDataBase.TABLENAME_USER+" WHERE "+ MyDataBase.USER_NAME +"=?",
                         new String[]{userName});
@@ -67,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(strValue.equals(password)){
                         //密码正确
+                        //暂存当前用户名
+
                         GotoMainActivity();
                     }else{
                         //密码错误

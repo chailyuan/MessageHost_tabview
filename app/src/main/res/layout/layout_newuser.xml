@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="欢迎使用"
+        android:text="新用户注册"
         android:textSize="30sp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
             android:layout_height="wrap_content"
             android:text="用户名："/>
         <EditText
-            android:id="@+id/login_username"
+            android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:singleLine="true"
+            android:text=""
             android:textAlignment="center"
-            android:hint="请输入用户名"
+            android:hint="新用户名"
             android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
@@ -41,13 +41,34 @@
             android:layout_height="wrap_content"
             android:text="密    码："/>
         <EditText
-            android:id="@+id/login_password"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="请输入密码"
+            android:text=""
+            android:hint="新密码"
             android:textAlignment="center"
             android:password="true"
-            android:singleLine="true"
+            android:background="@drawable/background_edit_show_list"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密    码："/>
+        <EditText
+            android:id="@+id/et_repeatpassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text=""
+            android:hint="确认密码"
+            android:textAlignment="center"
+            android:password="true"
             android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
 
@@ -55,39 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
     <Button
-        android:id="@+id/login_login"
+        android:id="@+id/btn_newuser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
         android:background="@drawable/background_button_login"
-        android:text="登录"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp">
-        <LinearLayout
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
-        <TextView
-            android:id="@+id/tv_forgotpassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="忘记密码？"
-            android:textColor="#aa4f94cd"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <LinearLayout
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:text="注册"/>
 
 </LinearLayout>

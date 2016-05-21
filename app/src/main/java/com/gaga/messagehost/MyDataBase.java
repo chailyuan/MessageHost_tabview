@@ -51,14 +51,14 @@ public class MyDataBase extends SQLiteOpenHelper {
     public static final String RP_DATE = "rp_dat";//维修日期
     public static final String RP_PHENOMENON = "rp_phenomenon";//故障现象
     public static final String RP_METHOD = "rp_method";//处理办法
-    public static final String RP_SERVICE_PERSON = "rp_service_person";//维修人
+    public static final String RP_SERVICE_PERSON = "rp_service_person";//维修人员
     public static final String RP_POSITION = "rp_position";//装备位置
     public static final String RP_CODE = "rp_code";//条形码
     //表二信息集合
     public static final String[] RP_ALL_TITLE = new String[]{RP_TYPE_EQUIPMENTS,RP_ID_EQUIPMENTS,RP_DATE,RP_PHENOMENON,
             RP_METHOD,RP_SERVICE_PERSON,RP_CODE,RP_POSITION};
     public static final String[] RP_ALL_CHINESE = new String[]{"装备类别","装备编码","维修日期","故障现象",
-            "处理办法","维修人","条形编码","装备位置"};
+            "处理办法","维修人员","条形编码","装备位置"};
 
     //表三，用户信息表
     public static final String TABLENAME_USER = "t_users";//电脑维修信息表_表名

@@ -2,20 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#eee4da">
+    android:background="#2001B8FF">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="请输入条形码："/>
         <EditText
             android:id="@+id/et_repairimportCode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/edit_search"
+            android:drawableLeft="@drawable/sp"
+            android:singleLine="true"
+            android:textColor="#0f0f0f"
+            android:padding="5dp"
             android:hint="请输入条形码"
             android:text=""/>
 
@@ -30,13 +48,14 @@
             android:text="维修日期："/>
 
         <EditText
+            android:paddingLeft="10dp"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/et_RPriqi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入日期"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -47,11 +66,12 @@
             android:layout_height="wrap_content"
             android:text="故障现象："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPxianxiang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入故障现象"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -62,11 +82,12 @@
             android:layout_height="wrap_content"
             android:text="处理办法："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPbanfa"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入处理办法"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -77,18 +98,50 @@
             android:layout_height="wrap_content"
             android:text="维修人员："/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/et_RPrenyaun"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="请输入维修人"
-            android:text=""/>
+            android:background="@drawable/background_edit_show_list"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="20dp">
+    </LinearLayout>
     <Button
         android:id="@+id/btn_RPSaveRPMess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:background="@drawable/background_button_login"
         android:text="保存"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp">
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="相关功能连接："
+        android:textSize="15dp"
+        android:textColor="#aa4f94cd"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp">
+        <TextView
+            android:paddingLeft="20dp"
+            android:id="@+id/tv_recordCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="维修记录查询"
+            android:textSize="20dp"
+            android:textColor="#aa4f94cd"/>
+    </LinearLayout>
+
 
 
 

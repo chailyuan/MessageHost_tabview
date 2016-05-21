@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#eee4da">
+    android:background="#50eee4da">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <LinearLayout
+            android:id="@+id/ll_1"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,19 +41,29 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 />
-            <Button
+            <TextView
                 android:id="@+id/btn_MaintainMain"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:text="@string/showconfigactivity_name"
-                android:layout_weight="1"
+                android:gravity="center"
                 android:background="@drawable/background_rectangle1"
                 android:textSize="18sp" />
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
     <LinearLayout
+
+        android:id="@+id/ll_2"
     android:layout_weight="1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -64,19 +75,28 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"/>
-            <Button
-                android:textAlignment="textStart"
+            <TextView
                 android:layout_gravity="start"
                 android:id="@+id/btn_AdminMain"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/repairmessactivity_name"
-                android:layout_weight="1"
+                android:gravity="center"
                 android:background="@drawable/background_rectangle2"
                 android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <ImageView
+            android:src="@drawable/akg"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_3"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,19 +108,28 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"/>
-            <Button
-                android:layout_weight="1"
+            <TextView
                 android:id="@+id/btn_ExprotMain"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:text="@string/inexportactivity_name"
                 android:background="@drawable/background_rectangle1"
                 android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_4"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,19 +143,28 @@
                 android:layout_gravity="center_vertical"
 
                 />
-            <Button
+            <TextView
                 android:id="@+id/btn_LibMain"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:text="@string/storageactivity_name"
-                android:layout_weight="1"
+                android:gravity="center"
                 android:background="@drawable/background_rectangle2"
                 android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_5"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,16 +178,24 @@
                 android:layout_gravity="center_vertical"
 
                 />
-            <Button
+            <TextView
                 android:id="@+id/btn_HelpMain"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:text="@string/helpactivity_name"
-                android:layout_weight="1"
+                android:gravity="center"
                 android:background="@drawable/background_rectangle1"
                 android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageView
+                android:src="@drawable/akg"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

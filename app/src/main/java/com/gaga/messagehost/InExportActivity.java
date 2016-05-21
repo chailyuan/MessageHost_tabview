@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -93,6 +94,18 @@ public class InExportActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_imexport);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("数据导入导出");
+        toolbar.setLogo(R.drawable.publish);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.goback_bg);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         btnExport = (Button)findViewById(R.id.btn_Export);
         btnImport = (Button)findViewById(R.id.btn_Import);

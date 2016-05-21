@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +38,50 @@ public class RepairHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_repairhistory);
-        etRPHistoryCode = (EditText)findViewById(R.id.et_repairhistoryCode);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("维修经验查询");
+//        toolbar.setSubtitle("linyuan");
+        toolbar.setLogo(R.drawable.zoom);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.goback_bg);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         lvRPhistory = (ListView)findViewById(R.id.lv_repairhistory);
 
-        MyAdapter myAdapter = new MyAdapter(this);
+        final MyAdapter myAdapter = new MyAdapter(this);
         lvRPhistory.setAdapter(myAdapter);
+
+        etRPHistoryCode = (EditText)findViewById(R.id.et_repairhistoryCode);
+        etRPHistoryCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String str = etRPHistoryCode.getText().toString();
+                if (!str.equals("")) {
+                    Cursor cursor = dbSingle.dbReader.query(MyDataBase.TABLENAME_REPARE, null, MyDataBase.RP_PHENOMENON + " LIKE ?", new String[]{"%" + str + "%"}, null, null, null, null);
+                    mData = GetData(cursor);
+                    myAdapter.notifyDataSetChanged();
+                    cursor.close();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -74,6 +116,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "无记录");
             map.put("content", "");
+            map.put("section",true);
             list.add(map);
 
             Toast.makeText(this, "未查詢到!", Toast.LENGTH_SHORT).show();
@@ -87,6 +130,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "记录"+count+"：");
             map.put("content","");
+            map.put("section",true);
             count++;
             list.add(map);
 
@@ -94,6 +138,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
                 map = new HashMap<String, Object>();
                 map.put("name", MyDataBase.RP_ALL_CHINESE[i] + ':');
                 map.put("content", cursor.getString(i + 1).toString());
+                map.put("section",false);
                 list.add(map);
             }
 
@@ -130,6 +175,20 @@ public class RepairHistoryActivity extends AppCompatActivity {
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
+            }
+
+//            ViewHolder holder  = new ViewHolder();
+//            convertView = mInflater.inflate(R.layout.layout_repaircheck_item, null);
+//            holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
+//            holder.info = (TextView) convertView.findViewById(R.id.tv_RPCheck_item);
+
+
+            if (mData.get(position).get("section")==true){
+                holder.info.setVisibility(View.GONE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.green_light));
+            }else {
+                holder.info.setVisibility(View.VISIBLE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.test));
             }
 
             holder.title.setText((String) mData.get(position).get("name"));

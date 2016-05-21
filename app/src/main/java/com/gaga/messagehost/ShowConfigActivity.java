@@ -2,6 +2,7 @@ package com.gaga.messagehost;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,8 @@ public class ShowConfigActivity extends AppCompatActivity {
     private boolean focus_etShowCode = true;
 
     private String tmpString;
+
+    MyAdapter myAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +71,21 @@ public class ShowConfigActivity extends AppCompatActivity {
 
         lvShow = (ListView) findViewById(R.id.lv_showconfig);
 
-        MyAdapter myAdapter = new MyAdapter(this);
+        myAdapter = new MyAdapter(this);
         lvShow.setAdapter(myAdapter);
+        lvShow.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //长按编辑相关选项
+
+                Intent i =new Intent(ShowConfigActivity.this,ShowItemEditActivity.class);
+                i.putExtra("name",mData.get(position).get("name").toString());
+                i.putExtra("content",mData.get(position).get("content").toString());
+                i.putExtra("position",position);
+                startActivityForResult(i, 100);
+                return true;
+            }
+        });
 
         etShowCode = (EditText) findViewById(R.id.et_showCode);
         etShowCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -85,6 +102,27 @@ public class ShowConfigActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==100&&resultCode==101){
+            String name = data.getStringExtra("name");
+            String content = data.getStringExtra("content");
+            int position = data.getIntExtra("position",-1);
+            if (position!=-1){
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("name",name);
+                map.put("content",content);
+                mData.set(position,map);
+                myAdapter.notifyDataSetChanged();
+
+                ContentValues cv = new ContentValues();
+                cv.put(MyDataBase.MT_ALL_TITLE[position],content);
+                String whereClause = MyDataBase.MT_CODE + "=?";
+                dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etShowCode.getText().toString()});
+            }
+        }
+    }
 
     private List<Map<String, Object>> GetData(Cursor cursor) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -168,8 +206,7 @@ public class ShowConfigActivity extends AppCompatActivity {
     //提取出来方便点
     public final class ViewHolder {
         public TextView title;
-        public EditText info;
-        public Button saveBtn;
+        public TextView info;
     }
 
     public class MyAdapter extends BaseAdapter {
@@ -191,10 +228,10 @@ public class ShowConfigActivity extends AppCompatActivity {
 
                 //可以理解为从vlist获取view  之后把view返回给ListView
 
-                convertView = mInflater.inflate(R.layout.layout_show_item, null);
+                convertView = mInflater.inflate(R.layout.layout_show_item_new, null);
                 holder.title = (TextView) convertView.findViewById(R.id.tv_showItem);
-                holder.info = (EditText) convertView.findViewById(R.id.et_showItem);
-                holder.saveBtn = (Button) convertView.findViewById(R.id.btn_showItem);
+                holder.info = (TextView) convertView.findViewById(R.id.et_showItem);
+//                holder.saveBtn = (Button) convertView.findViewById(R.id.btn_showItem);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -202,45 +239,45 @@ public class ShowConfigActivity extends AppCompatActivity {
 
             holder.title.setText((String) mData.get(position).get("name"));
             holder.info.setText((String) mData.get(position).get("content"));
-            if ((holder.title.getText().toString()).equals(MyDataBase.MT_ALL_CHINESE[11]+":")) {
-                holder.info.setFocusable(false);
-                holder.info.setEnabled(false);
-            } else {
-                holder.info.setFocusable(true);
-                holder.info.setEnabled(true);
-            }
 
-            final ViewHolder finalHolder = holder;
+//            if ((holder.title.getText().toString()).equals(MyDataBase.MT_ALL_CHINESE[11]+":")) {
+//                holder.info.setFocusable(false);
+//                holder.info.setEnabled(false);
+//            } else {
+//                holder.info.setFocusable(true);
+//                holder.info.setEnabled(true);
+//            }
 
 
-            holder.info.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (hasFocus) {
-                        //当被点击的时候，相应的设置为有效
-                        finalHolder.saveBtn.setEnabled(true);
-                    } else {
-                        //失去焦点的时候
-                        String ls = finalHolder.info.getText().toString();
-                        ((Map) mData.get(position)).put("content", ls);
-                    }
-                }
-            });
-            holder.saveBtn.setTag(position);
-            holder.saveBtn.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    System.out.println("点击的位置是" + position);
-                    //保存数据
-                    ContentValues cv = new ContentValues();
-                    cv.put(MyDataBase.MT_ALL_TITLE[position], finalHolder.info.getText().toString());
-                    String whereClause = MyDataBase.MT_CODE + "=?";
-                    dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etShowCode.getText().toString()});
-
-                    finalHolder.saveBtn.setEnabled(false);
-                }
-            });
+//
+//            holder.info.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(View v, boolean hasFocus) {
+//                    if (hasFocus) {
+//                        //当被点击的时候，相应的设置为有效
+//                        finalHolder.saveBtn.setEnabled(true);
+//                    } else {
+//                        //失去焦点的时候
+//                        String ls = finalHolder.info.getText().toString();
+//                        ((Map) mData.get(position)).put("content", ls);
+//                    }
+//                }
+//            });
+//            holder.saveBtn.setTag(position);
+//            holder.saveBtn.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    System.out.println("点击的位置是" + position);
+//                    //保存数据
+//                    ContentValues cv = new ContentValues();
+//                    cv.put(MyDataBase.MT_ALL_TITLE[position], finalHolder.info.getText().toString());
+//                    String whereClause = MyDataBase.MT_CODE + "=?";
+//                    dbSingle.dbWriter.update(MyDataBase.TABLENAME_MAINTAIN, cv, whereClause, new String[]{etShowCode.getText().toString()});
+//
+//                    finalHolder.saveBtn.setEnabled(false);
+//                }
+//            });
 
             //holder.viewBtn.setOnClickListener(MyListener(position));
 
