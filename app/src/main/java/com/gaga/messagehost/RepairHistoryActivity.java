@@ -116,6 +116,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "无记录");
             map.put("content", "");
+            map.put("section",true);
             list.add(map);
 
             Toast.makeText(this, "未查詢到!", Toast.LENGTH_SHORT).show();
@@ -129,6 +130,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
             map = new HashMap<String, Object>();
             map.put("name", "记录"+count+"：");
             map.put("content","");
+            map.put("section",true);
             count++;
             list.add(map);
 
@@ -136,6 +138,7 @@ public class RepairHistoryActivity extends AppCompatActivity {
                 map = new HashMap<String, Object>();
                 map.put("name", MyDataBase.RP_ALL_CHINESE[i] + ':');
                 map.put("content", cursor.getString(i + 1).toString());
+                map.put("section",false);
                 list.add(map);
             }
 
@@ -172,6 +175,20 @@ public class RepairHistoryActivity extends AppCompatActivity {
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
+            }
+
+//            ViewHolder holder  = new ViewHolder();
+//            convertView = mInflater.inflate(R.layout.layout_repaircheck_item, null);
+//            holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
+//            holder.info = (TextView) convertView.findViewById(R.id.tv_RPCheck_item);
+
+
+            if (mData.get(position).get("section")==true){
+                holder.info.setVisibility(View.GONE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.green_light));
+            }else {
+                holder.info.setVisibility(View.VISIBLE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.test));
             }
 
             holder.title.setText((String) mData.get(position).get("name"));

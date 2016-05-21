@@ -81,23 +81,11 @@ public class RepairCheckActivity extends AppCompatActivity {
             }
         });
 
-        mData = InitmData();
+        mData = new ArrayList<Map<String, Object>>();
 
         MyAdapter myAdapter = new MyAdapter(this);
         lvRpCheck.setAdapter(myAdapter);
 
-    }
-    private List<Map<String,Object>> InitmData(){
-        List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String,Object> map = null;
-
-        map = new HashMap<String, Object>();
-        map.put("name","");
-        map.put("content", "");
-        map.put("section",true);
-        list.add(map);
-
-        return list;
     }
 
     private List<Map<String, Object>> GetData(Cursor cursor) {
@@ -206,28 +194,31 @@ public class RepairCheckActivity extends AppCompatActivity {
 
             ViewHolder holder = null;
             if (convertView == null) {
-
                 holder = new ViewHolder();
-
-                //可以理解为从vlist获取view  之后把view返回给ListView
-
-
                 convertView = mInflater.inflate(R.layout.layout_repaircheck_item, null);
-
                 holder.info = (TextView) convertView.findViewById(R.id.tv_RPCheck_item);
                 holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
-
                 holder.section = (boolean) mData.get(position).get("section");
-
-//                if (holder.section){
-//                    convertView.setBackgroundColor(parent.getResources().getColor(COLORS[1]));
-//                }
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+
+//            ViewHolder holder = new ViewHolder();
+//            convertView = mInflater.inflate(R.layout.layout_repaircheck_item, null);
+//            holder.info = (TextView) convertView.findViewById(R.id.tv_RPCheck_item);
+//            holder.title = (TextView) convertView.findViewById(R.id.tv_RPName);
+//            holder.section = (boolean) mData.get(position).get("section");
+
             holder.title.setText((String) mData.get(position).get("name"));
             holder.info.setText((String) mData.get(position).get("content"));
+            if (mData.get(position).get("section")==true){
+                holder.info.setVisibility(View.GONE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.green_light));
+            }else {
+                holder.info.setVisibility(View.VISIBLE);
+                convertView.setBackgroundColor(parent.getResources().getColor(R.color.test));
+            }
 
 
             return convertView;

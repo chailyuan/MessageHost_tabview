@@ -8,6 +8,7 @@
     <string name="mainactivity_name">请选择功能</string>
     <string name="getcodeactivity_name">请输入条形码</string>
     <string name="app_name">管理助手</string>
+    <string name="newuser">新用户注册</string>
     <string name="title_activity_login">LoginActivity</string>
 
 </resources>
